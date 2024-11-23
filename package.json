@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "grunt-contrib-clean": "^2.0.1"
+  }
+}
