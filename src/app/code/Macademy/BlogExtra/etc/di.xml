@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Macademy\Blog\Observer\LogPostDetailView">
+        <plugin name="macademy_blogextra_add_data_to_post_detail_observer"
+                type="Macademy\BlogExtra\Plugin\AddDataToPostDetailObserver"/>
+    </type>
+    <type name="Macademy\Blog\Controller\Post\Detail">
+        <plugin name="macademy_blogextra_alternate_post_detail_template"
+                type="Macademy\BlogExtra\Plugin\AlternatePostDetailTemplate"/>
+    </type>
+</config>

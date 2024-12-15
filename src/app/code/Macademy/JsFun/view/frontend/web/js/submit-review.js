@@ -4,14 +4,19 @@
  */
 
 define([
-    'jquery'
-], function ($) {
+    'jquery',
+    'mage/translate'
+], function ($, $t) {
     'use strict';
 
     return function (config, element) {
-        $(element).on('submit', function () {
+        $(element).on('submit', function (e) {
             if ($(this).valid()) {
-                $(this).find('.submit').attr('disabled', true);
+                if (confirm($t('you sure, you wanna submit homie?'))) {
+                    $(this).find('.submit').attr('disabled', true);
+                } else {
+                    e.preventDefault();
+                }
             }
         });
     };
