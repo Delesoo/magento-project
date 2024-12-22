@@ -1,17 +1,19 @@
 define([
     'uiComponent',
-    'ko'
+    'ko',
+    'mage/storage'
 ], function (
     Component,
-    ko
+    ko,
+    storage
 ) {
     'use strict';
 
     return Component.extend({
         defaults: {
             template: 'Macademy_InventoryFulfillment/sku-lookup',
-            sku: ko.observable('vaime ariqa'),
-            placeholder: 'Example: 24-MB01'
+            sku: ko.observable('24-MB01'),
+            messageResponse: ko.observable('')
         },
         initialize() {
             this._super();
@@ -19,7 +21,15 @@ define([
             console.log('The skuLookup component has been loaded.');
         },
         handleSubmit() {
-            console.log(this.sku() + 'SKU confirmed');
+            this.messageResponse('');
+
+            storage.get(`rest/V1/products/${this.sku()}`)
+                .done(response => {
+                    this.messageResponse(`Product found! <strong>${response.name}</strong>`);
+                })
+                .fail(() => {
+                    this.messageResponse('Product not found homie, go find it urself.');
+                })
         }
     });
 });
