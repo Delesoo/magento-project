@@ -1,38 +1,49 @@
 define([
     'uiComponent',
-    'ko'
+    'ko',
+    'Macademy_InventoryFulfillment/js/model/box-configurations',
+    'Macademy_InventoryFulfillment/js/model/sku',
+    'jquery',
+    'mage/validation',
 ], function (
     Component,
-    ko
+    ko,
+    boxConfigurationsModel,
+    skuModel,
+    $,
 ) {
     'use strict';
 
-    const boxConfiguration = () => {
-        return {
-            length: ko.observable(),
-            width: ko.observable(),
-            height: ko.observable(),
-            weight: ko.observable(),
-            unitsPerBox: ko.observable(),
-            numberOfBoxes: ko.observable(),
-        };
-    };
     return Component.extend({
         defaults: {
-            boxConfigurations: ko.observableArray([boxConfiguration()])
+            boxConfigurationsModel: boxConfigurationsModel,
+            skuModel: skuModel,
         },
         initialize() {
             this._super();
             console.log('The boxConfigurations component has been loaded');
+            skuModel.isSuccess.subscribe((value) => {
+                console.log('SKU isSuccess new value', value);
+            });
+            skuModel.isSuccess.subscribe((value) => {
+                console.log('SKU isSuccess old value', value);
+            }, null, 'beforeChange');
+
         },
         handleAdd() {
-            this.boxConfigurations.push(boxConfiguration());
+            boxConfigurationsModel.add();
         },
         handleDelete(index) {
-            this.boxConfigurations.splice(index, 1);
+            boxConfigurationsModel.delete(index);
         },
         handleSubmit() {
-            console.log('Submitted yoo');
+            $('.box-configurations form input').removeAttr('aria-invalid');
+
+            if ($('.box-configurations form').valid()) {
+                boxConfigurationsModel.isSuccess(true);
+            } else {
+                boxConfigurationsModel.isSuccess(false);
+            }
         }
     });
 });

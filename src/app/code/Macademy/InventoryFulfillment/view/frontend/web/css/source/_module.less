@@ -1,0 +1,69 @@
+& when (@media-common = true) {
+    #shipping-plan {
+        overflow: auto;
+        margin-top: -20px;
+    }
+
+    .sku-lookup {
+        input {
+            width: 180px;
+        }
+
+        button {
+            margin: -3px 0 0 6px;
+        }
+
+        .message-response {
+            padding: 8px 0;
+        }
+    }
+
+    .box-configurations {
+        width: 700px;
+        overflow-x: auto;
+
+        input {
+            width: 60px;
+        }
+
+        .delete {
+            display: block;
+            padding-top: 5px;
+            cursor: pointer;
+            color: @color-red12;
+        }
+    }
+
+    table {
+        margin-bottom: 28px;
+    }
+
+    td {
+        position: relative;
+    }
+
+    input[aria-invalid="true"] {
+        border: 1px solid @color-red12;
+    }
+
+    label.error {
+        position: absolute;
+        width: 100%;
+        display: block;
+        margin-top: 3px;
+        font-size: 1.2rem;
+        line-height: 1.2rem;
+        font-weight: 400;
+        color: @color-red12;
+    }
+
+    button.primary {
+        margin-left: 6px;
+    }
+
+    .review-submit {
+        table {
+            width: 500px;
+        }
+    }
+}
