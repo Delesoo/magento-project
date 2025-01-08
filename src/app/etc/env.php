@@ -1,7 +1,8 @@
 <?php
 return [
     'backend' => [
-        'frontName' => 'admin'
+        'frontName' => 'admin',
+        'disable_authentication' => true
     ],
     'remote_storage' => [
         'driver' => 'file'

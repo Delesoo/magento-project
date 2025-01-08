@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ProjectResources">
+    <resource url="http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd" location="$PROJECT_DIR$" />
     <resource url="urn:magento:framework:Acl/etc/acl.xsd" location="$PROJECT_DIR$/vendor/magento/framework/Acl/etc/acl.xsd" />
     <resource url="urn:magento:framework:Acl/etc/acl_merged.xsd" location="$PROJECT_DIR$/vendor/magento/framework/Acl/etc/acl_merged.xsd" />
     <resource url="urn:magento:framework:Api/etc/extension_attributes.xsd" location="$PROJECT_DIR$/vendor/magento/framework/Api/etc/extension_attributes.xsd" />

@@ -3,4 +3,7 @@
        xsi:noNamespaceSchemaLocation="urn:magento:framework:Config/etc/theme.xsd">
     <title>Juno</title>
     <parent>Magento/blank</parent>
+    <media>
+        <preview_image>media/preview.png</preview_image>
+    </media>
 </theme>
