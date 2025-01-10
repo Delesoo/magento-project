@@ -9,5 +9,6 @@
                 <argument name="logo_height" xsi:type="string">61</argument>
             </arguments>
         </referenceBlock>
+        <referenceBlock name="report.bugs" display="false"/>
     </body>
 </page>

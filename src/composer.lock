@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1fd3b69b2f84d03325a2b79e107a2fac",
+    "content-hash": "5dbbe6d949063b1c16ce60da9cc2b609",
     "packages": [
         {
             "name": "2tvenom/cborencode",
@@ -19150,6 +19150,44 @@
                 "source": "https://github.com/magento/magento-zend-pdf/tree/1.16.3"
             },
             "time": "2023-08-25T12:52:21+00:00"
+        },
+        {
+            "name": "markshust/magento2-module-layouthandlelogger",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/markshust/magento2-module-layouthandlelogger.git",
+                "reference": "46a70f444f310312b5ddb3833c41d104ae539c0e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/markshust/magento2-module-layouthandlelogger/zipball/46a70f444f310312b5ddb3833c41d104ae539c0e",
+                "reference": "46a70f444f310312b5ddb3833c41d104ae539c0e",
+                "shasum": ""
+            },
+            "require": {
+                "magento/framework": ">=103",
+                "php": "^8"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "MarkShust\\LayoutHandleLogger\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "The LayoutHandleLogger module displays layout handles when in developer mode.",
+            "support": {
+                "issues": "https://github.com/markshust/magento2-module-layouthandlelogger/issues",
+                "source": "https://github.com/markshust/magento2-module-layouthandlelogger/tree/1.0.0"
+            },
+            "time": "2023-02-07T00:34:02+00:00"
         },
         {
             "name": "monolog/monolog",

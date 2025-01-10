@@ -379,6 +379,7 @@ return [
         'Macademy_FreeShippingPromo' => 1,
         'Macademy_InventoryFulfillment' => 1,
         'Macademy_JsFun' => 1,
+        'MarkShust_LayoutHandleLogger' => 1,
         'PayPal_Braintree' => 1,
         'PayPal_BraintreeCustomerBalance' => 1,
         'PayPal_BraintreeGiftCardAccount' => 1,
