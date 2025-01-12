@@ -10,5 +10,11 @@
             </arguments>
         </referenceBlock>
         <referenceBlock name="report.bugs" display="false"/>
+        <referenceContainer name="footer">
+            <container name="phone-number-container" htmlTag="div" htmlId="phone-number-container"
+                       before="copyright">
+                <block name="phone-number" template="Juno_Theme::phone-number.phtml"/>
+            </container>
+        </referenceContainer>
     </body>
 </page>
