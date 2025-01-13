@@ -1,3 +1,10 @@
+<?php
+/** @var $block Magento\Framework\View\Element\Template */
+/** @var $phoneNumberViewModel Juno\Theme\ViewModel\PhoneNumber */
+$phoneNumberViewModel = $block->getData('phone_number_view_model');
+?>
+
 <div class="phone-number">
-    <?= __('Phone number: %1', '+995 557-607-111') ?>:
+    <?= __('Phone number: %1', $phoneNumberViewModel->getPhoneNumber()) ?>
+    <?= $block->getBaseUrl() ?>
 </div>

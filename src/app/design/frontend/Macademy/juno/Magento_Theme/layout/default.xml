@@ -13,7 +13,13 @@
         <referenceContainer name="footer">
             <container name="phone-number-container" htmlTag="div" htmlId="phone-number-container"
                        before="copyright">
-                <block name="phone-number" template="Juno_Theme::phone-number.phtml"/>
+                <block name="phone-number" template="Juno_Theme::phone-number.phtml"
+                       class="Magento\Framework\View\Element\Template">
+                    <arguments>
+                        <argument name="phone_number_view_model" xsi:type="object">Juno\Theme\ViewModel\Phonenumber
+                        </argument>
+                    </arguments>
+                </block>
             </container>
         </referenceContainer>
     </body>
