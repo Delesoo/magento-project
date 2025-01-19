@@ -19,5 +19,12 @@
     locale: 'en_US',
     files: [ 'css/styles-old', 'css/styles' ],
     dsl: 'less'
+  },
+  juno: {
+    area: 'frontend',
+    name: 'Macademy/juno',
+    locale: 'en_US',
+    files: [ 'css/styles-m', 'css/styles-l' ],
+    dsl: 'less'
   }
 }
