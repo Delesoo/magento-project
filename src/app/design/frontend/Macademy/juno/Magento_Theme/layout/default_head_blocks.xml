@@ -3,5 +3,8 @@
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <head>
         <script src="/livereload.js?port=443" src_type="url" defer="true"/>
+        <css src="https://unpkg.com/aos@2.3.1/dist/aos.css" src_type="url"/>
+        <script src="Juno_Theme::js/aos-init.js"/>
+        <remove src="mage/calendar.css"/>
     </head>
 </page>

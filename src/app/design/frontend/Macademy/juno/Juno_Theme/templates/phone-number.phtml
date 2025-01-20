@@ -9,6 +9,6 @@ $phoneNumberViewModel = $block->getData('phone_number_view_model');
     <p>Store Hours: Mon-Fri 9am–5pm</p>
 </div>
 
-<div class="phone-number">
+<div class="phone-number" data-aos="fade-down">
     <?= __('Phone number: %1', $escaper->escapeHtml($phoneNumberViewModel->getPhoneNumber())) ?>
 </div>
