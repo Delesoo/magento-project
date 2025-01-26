@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<acl xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <resource id="Magento_Backend::admin" title="Magento Backend">
+        <resource id="Magento_Customer::customer" title="Customers">
+            <resource id="Kapana_Signup::signup_root" title="Signups" sortOrder="10"/>
+        </resource>
+    </resource>
+</acl>
