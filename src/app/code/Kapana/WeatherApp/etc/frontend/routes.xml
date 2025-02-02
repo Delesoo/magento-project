@@ -2,9 +2,8 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
     <router id="standard">
-        <route id="kapana_signup" frontName="signup">
-            <module name="Kapana_Signup"/>
+        <route id="weather" frontName="weather">
+            <module name="Kapana_WeatherApp"/>
         </route>
     </router>
 </config>
-

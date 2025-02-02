@@ -1,0 +1,146 @@
+<style>
+    .custom-button {
+        background-color: #a51515;
+        color: #ffffff;
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        text-decoration: none;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .custom-button:hover {
+        background-color: #cc0000;
+        color: #fff;
+    }
+</style>
+<?php
+/**
+ * @var $block \Kapana\WeatherApp\Block\WeatherData
+ */
+$city = $block->getData('city') ?: 'Tbilisi'; // Default city if none set
+$weatherData = $block->getData('weather_data'); // Passed from the controller (current weather info)
+?>
+
+<div class="weather-app">
+    <form action="<?php echo $block->getUrl('weather/index/index'); ?>" method="post">
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city" value="<?php echo $block->escapeHtml($city); ?>"/>
+        <button type="submit" class="custom-button">Submit</button>
+    </form>
+
+    <!-- Display Current Weather Info -->
+    <?php if (isset($weatherData['name'])): ?>
+        <h2>Current Weather for <?php echo $block->escapeHtml($weatherData['name']); ?></h2>
+        <p>
+            Temperature:
+            <?php
+            $tempCelsius = $weatherData['main']['temp'] - 273.15;
+            echo round($tempCelsius, 1) . ' °C';
+            ?>
+        </p>
+        <p>
+            Feels Like:
+            <?php
+            $feelsLikeCelsius = $weatherData['main']['feels_like'] - 273.15;
+            echo round($feelsLikeCelsius, 1) . ' °C';
+            ?>
+        </p>
+        <p>
+            Description: <?php echo $block->escapeHtml($weatherData['weather'][0]['description']); ?>
+        </p>
+        <p>
+            Wind Speed: <?php echo $block->escapeHtml($weatherData['wind']['speed']); ?> m/s
+        </p>
+        <p>
+            Humidity: <?php echo $block->escapeHtml($weatherData['main']['humidity']); ?>%
+        </p>
+        <p>
+            Wind Speed: <?php echo $block->escapeHtml($weatherData['wind']['speed']); ?> m/s
+        </p>
+        <p>
+            Sunrise: <?php echo date('H:i:s', $weatherData['sys']['sunrise']); ?>
+        </p>
+        <p>
+            Sunset: <?php echo date('H:i:s', $weatherData['sys']['sunset']); ?>
+        </p>
+    <?php else: ?>
+        <p>No weather data available.</p>
+    <?php endif; ?>
+
+    <!-- Weather Historical Data Section -->
+    <div class="weather-history">
+        <h2>
+            Weather Historical Data
+            <a href="<?php echo $block->getUrl('weather/pdf/index', ['city' => $city]); ?>" class="custom-button">Print
+                All</a>
+        </h2>
+
+        <?php $historyCollection = $block->getHistoryCollection(); ?>
+        <?php if ($historyCollection->getSize()): ?>
+            <table border="1" cellpadding="5" cellspacing="0">
+                <thead>
+                <tr>
+                    <th>City</th>
+                    <th>Temperature (°C)</th>
+                    <th>Feels Like (°C)</th>
+                    <th>Humidity (%)</th>
+                    <th>Description</th>
+                    <th>Sunrise</th>
+                    <th>Sunset</th>
+                    <th>Recorded At</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($historyCollection as $record): ?>
+                    <?php
+                    $weather = json_decode($record->getWeatherData(), true);
+                    $temp = isset($weather['main']['temp'])
+                        ? round($weather['main']['temp'] - 273.15, 1)
+                        : 'N/A';
+                    $feelsLike = isset($weather['main']['feels_like'])
+                        ? round($weather['main']['feels_like'] - 273.15, 1)
+                        : 'N/A';
+                    $humidity = isset($weather['main']['humidity'])
+                        ? $weather['main']['humidity']
+                        : 'N/A';
+                    $description = isset($weather['weather'][0]['description'])
+                        ? $weather['weather'][0]['description']
+                        : 'N/A';
+                    $sunrise = isset($weather['sys']['sunrise'])
+                        ? date('H:i:s', $weather['sys']['sunrise'])
+                        : 'N/A';
+                    $sunset = isset($weather['sys']['sunset'])
+                        ? date('H:i:s', $weather['sys']['sunset'])
+                        : 'N/A';
+                    ?>
+                    <tr>
+                        <td><?php echo $block->escapeHtml($record->getCity()); ?></td>
+                        <td><?php echo $temp; ?></td>
+                        <td><?php echo $feelsLike; ?></td>
+                        <td><?php echo $humidity; ?></td>
+                        <td><?php echo $block->escapeHtml($description); ?></td>
+                        <td><?php echo $sunrise; ?></td>
+                        <td><?php echo $sunset; ?></td>
+                        <td><?php echo $block->escapeHtml($record->getCreatedAt()); ?></td>
+                        <td>
+                            <a href="<?php echo $block->getUrl('weather/history/delete', ['id' => $record->getId()]); ?>"
+                               class="button"
+                               onclick="return confirm('Are you sure you want to delete this record?');">
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+        <?php else: ?>
+            <p>No historical records found.</p>
+        <?php endif; ?>
+    </div>
+
+
+

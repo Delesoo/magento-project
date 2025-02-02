@@ -6,6 +6,7 @@ use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\View\Result\PageFactory;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\Controller\ResultFactory;
 
 class Index extends Action
 {
@@ -25,13 +26,14 @@ class Index extends Action
 
     public function execute()
     {
-        $enabled = $this->scopeConfig->getValue(
+        // Retrieve the form enabled config value
+        $formEnabled = $this->scopeConfig->isSetFlag(
             'signup_config/general/enabled',
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE
         );
 
-        if (!$enabled) {
-            $this->messageManager->addErrorMessage(__('Form not enabled'));
+        if (!$formEnabled) {
+            die("Form is disabled in configuration.");
         }
 
         return $this->resultPageFactory->create();

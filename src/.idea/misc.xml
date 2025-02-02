@@ -14,6 +14,7 @@
     <resource url="urn:magento:framework:Communication/etc/communication.xsd" location="$PROJECT_DIR$/vendor/magento/framework/Communication/etc/communication.xsd" />
     <resource url="urn:magento:framework:Config/Test/Unit/_files/reader/schema.xsd" location="$PROJECT_DIR$/vendor/magento/framework/Config/Test/Unit/_files/reader/schema.xsd" />
     <resource url="urn:magento:framework:Config/Test/Unit/_files/sample.xsd" location="$PROJECT_DIR$/vendor/magento/framework/Config/Test/Unit/_files/sample.xsd" />
+    <resource url="urn:magento:framework:Config/etc/system_file.xsd" location="$PROJECT_DIR$" />
     <resource url="urn:magento:framework:Config/etc/theme.xsd" location="$PROJECT_DIR$/vendor/magento/framework/Config/etc/theme.xsd" />
     <resource url="urn:magento:framework:Config/etc/view.xsd" location="$PROJECT_DIR$/vendor/magento/framework/Config/etc/view.xsd" />
     <resource url="urn:magento:framework:Data/Test/Unit/Argument/_files/types_schema.xsd" location="$PROJECT_DIR$/vendor/magento/framework/Data/Test/Unit/Argument/_files/types_schema.xsd" />
