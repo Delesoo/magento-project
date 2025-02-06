@@ -45,7 +45,6 @@ class CreateLinkedinAttribute implements DataPatchInterface
         /** @var \Magento\Eav\Setup\EavSetup $eavSetup */
         $eavSetup = $this->eavSetupFactory->create(['setup' => $this->moduleDataSetup]);
 
-        // Create the 'linkedin_profile' attribute.
         $eavSetup->addAttribute(
             Customer::ENTITY,
             'linkedin_profile',
@@ -53,14 +52,12 @@ class CreateLinkedinAttribute implements DataPatchInterface
                 'type' => 'varchar',
                 'label' => 'LinkedIn Profile',
                 'input' => 'text',
-                'required' => false, // We'll handle requirement logic via config.
+                'required' => false,
                 'unique' => true,
                 'visible' => true,
                 'position' => 999,
                 'system' => false,
                 'maxlength' => 250,
-                // Additional validations could be set via 'frontend_class' => 'validate-url'
-                // But we might do further server-side checks in Observer.
 
                 'user_defined' => true,
                 'visible_on_front' => true,
@@ -69,7 +66,6 @@ class CreateLinkedinAttribute implements DataPatchInterface
                 'frontend_input' => 'text',
                 'frontend_label' => 'LinkedIn Profile',
 
-                // Make it an attribute customers can edit in front-end and admin.
                 'used_in_forms' => [
                     'adminhtml_customer',
                     'customer_account_create',

@@ -39,8 +39,6 @@ class ValidateLinkedinObserver implements ObserverInterface
                 throw new LocalizedException(__('Invalid LinkedIn profile URL.'));
             }
 
-            // Check uniqueness.
-            // This could be done using a customer repository search.
             /** @var CustomerRepositoryInterface $customerRepository */
         }
 
