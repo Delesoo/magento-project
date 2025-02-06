@@ -30,14 +30,10 @@ use Magento\Framework\View\Result\PageFactory;
 
     public function execute()
     {
-        // Get the city parameter; default to 'Tbilisi'
         $city = $this->getRequest()->getParam('city', 'Tbilisi');
 
-        // Get current weather data
         $weatherData = $this->weatherModel->getWeatherByCity($city);
 
-        // Save historical data only if the request method is POST.
-        // Delete existing historical records for this city to ensure only one record remains.
         if ($this->getRequest()->getMethod() === \Magento\Framework\App\Request\Http::METHOD_POST) {
             $collection = $this->_objectManager
                 ->create(\Kapana\WeatherApp\Model\ResourceModel\WeatherHistory\Collection::class)
@@ -46,7 +42,6 @@ use Magento\Framework\View\Result\PageFactory;
                 $record->delete();
             }
 
-            // Save the new record.
             $data = [
                 'city' => $city,
                 'weather_data' => json_encode($weatherData),

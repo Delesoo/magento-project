@@ -101,6 +101,7 @@
       <sourceFolder url="file://$MODULE_DIR$/vendor/magento/framework/View/Test" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/vendor/magento/framework/Webapi/Test" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/vendor/magento/framework/Xml/Test" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/app/code/Macademy/Blog/" isTestSource="false" packagePrefix="Macademy\Blog\" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/2tvenom/cborencode" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/allure-framework/allure-codeception" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/allure-framework/allure-php-commons" />
