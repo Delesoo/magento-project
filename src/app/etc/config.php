@@ -374,6 +374,7 @@ return [
         'Magento_WishlistGraphQl' => 1,
         'Magento_WishlistSampleData' => 1,
         'Juno_Theme' => 1,
+        'Kapana_Linkedin' => 1,
         'Kapana_Signup' => 1,
         'Kapana_WeatherApp' => 1,
         'Macademy_Blog' => 1,

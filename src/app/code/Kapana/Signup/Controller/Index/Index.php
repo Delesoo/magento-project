@@ -26,15 +26,15 @@ class Index extends Action
 
     public function execute()
     {
-        // Retrieve the form enabled config value
-        $formEnabled = $this->scopeConfig->isSetFlag(
-            'signup_config/general/enabled',
-            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
-        );
-
-        if (!$formEnabled) {
-            die("Form is disabled in configuration.");
-        }
+//        // Retrieve the form enabled config value
+//        $formEnabled = $this->scopeConfig->isSetFlag(
+//            'signup_config/general/enabled',
+//            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+//        );
+//
+//        if (!$formEnabled) {
+//            die("Form is disabled in configuration.");
+//        }
 
         return $this->resultPageFactory->create();
     }

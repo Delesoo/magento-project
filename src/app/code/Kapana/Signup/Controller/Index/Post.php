@@ -11,21 +11,21 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 
 class Post extends Action
 {
-    protected $redirectFactory;
+    protected $resultRedirectFactory;
     protected $signupFactory;
     protected $signupRepository;
     protected $scopeConfig;
 
     public function __construct(
         Context                   $context,
-        RedirectFactory           $redirectFactory,
+        RedirectFactory           $resultRedirectFactory,
         SignupFactory             $signupFactory,
         SignupRepositoryInterface $signupRepository,
         ScopeConfigInterface      $scopeConfig
     )
     {
         parent::__construct($context);
-        $this->redirectFactory = $redirectFactory;
+        $this->resultRedirectFactory = $resultRedirectFactory;
         $this->signupFactory = $signupFactory;
         $this->signupRepository = $signupRepository;
         $this->scopeConfig = $scopeConfig;

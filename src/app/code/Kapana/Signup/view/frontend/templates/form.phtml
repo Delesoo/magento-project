@@ -1,0 +1,12 @@
+<?php
+/** @var $block \Magento\Framework\View\Element\Template */
+?>
+<form action="<?= $block->getUrl('signup/index/post') ?>" method="POST">
+    <label for="name">Name</label>
+    <input type="text" name="name" required/>
+
+    <label for="date">Date</label>
+    <input type="date" name="date" required/>
+
+    <button type="submit">Submit</button>
+</form>

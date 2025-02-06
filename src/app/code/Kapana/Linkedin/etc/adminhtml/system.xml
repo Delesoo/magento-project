@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="kapana_linkedin" translate="label" sortOrder="900" showInDefault="1" showInWebsite="1"
+                 showInStore="1">
+            <label>Kapana LinkedIn</label>
+            <tab>customer</tab>
+
+            <resource>Kapana_Linkedin::config</resource>
+            <group id="general" translate="label" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="10">
+                <label>General Settings</label>
+                <field id="field_mode" translate="label" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>LinkedIn Profile Field Mode</label>
+                    <source_model>Kapana\Linkedin\Model\Config\Source\FieldMode</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
