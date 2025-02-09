@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="kapana_mysignup" resource="default" engine="innodb" comment="Signup Table">
+        <column xsi:type="int" name="signup_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Signup ID"/>
+        <column xsi:type="varchar" name="name" nullable="false" length="255" comment="Name"/>
+        <column xsi:type="date" name="date" nullable="false" comment="Date"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="signup_id"/>
+        </constraint>
+    </table>
+</schema>

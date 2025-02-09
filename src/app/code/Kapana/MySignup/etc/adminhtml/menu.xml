@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Kapana_MySignup::signup_menu"
+             title="Signups"
+             module="Kapana_MySignup"
+             sortOrder="100"
+             parent="Magento_Customer::customer"
+             action="mysignup/index/index"
+             resource="Kapana_Mysignup::section"/>
+    </menu>
+</config>
