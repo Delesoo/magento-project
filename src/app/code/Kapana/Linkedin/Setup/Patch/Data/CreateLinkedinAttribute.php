@@ -5,10 +5,7 @@ namespace Kapana\Linkedin\Setup\Patch\Data;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Eav\Setup\EavSetupFactory;
-use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface;
 use Magento\Customer\Model\Customer;
-use Magento\Eav\Model\Entity\Attribute\Set as AttributeSet;
-use Magento\Eav\Model\Entity\Attribute\Group as AttributeGroup;
 
 class CreateLinkedinAttribute implements DataPatchInterface
 {
@@ -53,26 +50,28 @@ class CreateLinkedinAttribute implements DataPatchInterface
                 'label' => 'LinkedIn Profile',
                 'input' => 'text',
                 'required' => false,
-                'unique' => true,
+                'unique' => false,
                 'visible' => true,
                 'position' => 999,
                 'system' => false,
-                'maxlength' => 250,
-
+                'validate_rules' => '{"max_text_length":250,"min_text_length":0}',
                 'user_defined' => true,
                 'visible_on_front' => true,
                 'sort_order' => 999,
-
                 'frontend_input' => 'text',
                 'frontend_label' => 'LinkedIn Profile',
-
-                'used_in_forms' => [
-                    'adminhtml_customer',
-                    'customer_account_create',
-                    'customer_account_edit'
-                ],
             ]
         );
+        $attribute = $eavSetup->getEavConfig()->getAttribute(Customer::ENTITY, 'linkedin_profile');
+        $attribute->setData(
+            'used_in_forms',
+            [
+                'adminhtml_customer',
+                'customer_account_create',
+                'customer_account_edit'
+            ]
+        );
+        $attribute->save();
 
         $this->moduleDataSetup->getConnection()->endSetup();
         return $this;

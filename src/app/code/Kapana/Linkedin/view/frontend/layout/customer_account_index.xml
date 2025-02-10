@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="customer.account.dashboard.info.blocks">
+            <block class="Kapana\Linkedin\Block\Account\Linkedin"
+                   name="customer.account.dashboard.linkedin"
+                   template="Kapana_Linkedin::customer/account/linkedin.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

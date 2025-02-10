@@ -5,17 +5,21 @@ namespace Kapana\WeatherApp\Controller\Index;
 use AllowDynamicProperties;
 use Kapana\WeatherApp\Model\Weather;
 use Magento\Framework\App\Action\Action;
-use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\View\Result\PageFactory;
 
-
-#[AllowDynamicProperties] class Index extends Action implements HttpGetActionInterface
+#[AllowDynamicProperties]
+class Index extends Action
 {
     /**
      * @var PageFactory
      */
     protected $resultPageFactory;
+
+    /**
+     * @var Weather
+     */
+    protected $weatherModel;
 
     public function __construct(
         Context     $context,
@@ -34,6 +38,7 @@ use Magento\Framework\View\Result\PageFactory;
 
         $weatherData = $this->weatherModel->getWeatherByCity($city);
 
+        // Process form submission if it's a POST request
         if ($this->getRequest()->getMethod() === \Magento\Framework\App\Request\Http::METHOD_POST) {
             $collection = $this->_objectManager
                 ->create(\Kapana\WeatherApp\Model\ResourceModel\WeatherHistory\Collection::class)
@@ -51,7 +56,6 @@ use Magento\Framework\View\Result\PageFactory;
             $weatherHistoryModel->save();
         }
 
-
         $resultPage = $this->resultPageFactory->create();
         $block = $resultPage->getLayout()->getBlock('weather_data');
         if ($block) {
@@ -60,6 +64,5 @@ use Magento\Framework\View\Result\PageFactory;
         }
 
         return $resultPage;
-
     }
 }

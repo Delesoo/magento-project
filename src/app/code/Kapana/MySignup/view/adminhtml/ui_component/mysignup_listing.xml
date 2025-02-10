@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">mysignup_listing.mysignup_listing_data_source</item>
+        </item>
+        <item name="spinner" xsi:type="string">mysignup_columns</item>
+    </argument>
+    <dataSource name="mysignup_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">
+                Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider
+            </argument>
+            <argument name="name" xsi:type="string">mysignup_listing_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">signup_id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="collection" xsi:type="object">Kapana\MySignup\Model\ResourceModel\Signup\Collection
+            </argument>
+        </argument>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters"/>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="mysignup_columns">
+        <column name="signup_id">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">ID</label>
+                <sorting>asc</sorting>
+            </settings>
+        </column>
+    </columns>
+</listing>

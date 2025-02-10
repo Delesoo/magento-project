@@ -1,8 +1,12 @@
-<?xml version="1.0" ?>
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Layout for the Sign Ups admin page -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       layout="admin-2columns-left"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
-        <uiComponent name="kapana_mysignup_listing"/>
+        <referenceContainer name="content">
+            <block class="Kapana\MySignup\Block\Adminhtml\Signup" name="mysignup.list"
+                   template="Kapana_MySignup::signup.phtml"/>
+        </referenceContainer>
     </body>
 </page>

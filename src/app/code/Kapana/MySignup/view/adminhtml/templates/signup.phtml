@@ -1,0 +1,30 @@
+<?php
+/** @var $block \Kapana\MySignup\Block\Adminhtml\Signup */
+$collection = $block->getSignupCollection();
+?>
+<div class="admin__data-grid">
+    <h2><?php echo __('Sign Ups') ?></h2>
+    <?php if ($collection->getSize()): ?>
+        <table class="data-grid">
+            <thead>
+            <tr>
+                <th><?php echo __('ID') ?></th>
+                <th><?php echo __('Name') ?></th>
+                <th><?php echo __('Date') ?></th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($collection as $item): ?>
+                <tr>
+                    <td><?php echo $item->getData('signup_id'); ?></td>
+                    <td><?php echo $item->getData('name'); ?></td>
+                    <td><?php echo $item->getData('date'); ?></td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    <?php else: ?>
+        <p><?php echo __('No sign ups found.'); ?></p>
+    <?php endif; ?>
+</div>
+

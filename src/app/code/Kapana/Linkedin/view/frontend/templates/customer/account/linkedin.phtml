@@ -1,0 +1,21 @@
+<?php
+/** @var $block \Kapana\Linkedin\Block\Account\Linkedin */
+$customer = $block->getCustomer();
+$attribute = $customer->getCustomAttribute('linkedin_profile');
+$linkedinUrl = $attribute ? $attribute->getValue() : null;
+
+echo '<pre>';
+var_dump($linkedinUrl);
+echo '</pre>';
+?>
+
+
+
+<?php if (!empty($linkedinUrl)): ?>
+    <div class="linkedin-profile-info">
+        <strong><?= __('LinkedIn Profile:') ?></strong>
+        <a href="<?= $block->escapeUrl($linkedinUrl) ?>" target="_blank">
+            <?= $block->escapeHtml($linkedinUrl) ?>
+        </a>
+    </div>
+<?php endif; ?>

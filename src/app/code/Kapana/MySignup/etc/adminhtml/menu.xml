@@ -3,11 +3,11 @@
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
         <add id="Kapana_MySignup::signup_menu"
-             title="Signups"
+             title="Sign Ups"
              module="Kapana_MySignup"
-             sortOrder="100"
-             parent="Magento_Customer::customer"
+             sortOrder="10"
+             parent="Magento_Backend::marketing"
              action="mysignup/index/index"
-             resource="Kapana_Mysignup::section"/>
+             resource="Kapana_MySignup::section"/>
     </menu>
 </config>
