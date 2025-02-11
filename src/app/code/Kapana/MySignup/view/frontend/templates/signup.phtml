@@ -1,5 +1,10 @@
 <?php
-/** @var $block \Kapana\MySignup\Model; */
+/** @var $block \Kapana\MySignup\Block\Signup */
+if (!$block->isSignupEnabled()) {
+    // Optionally display a message or simply output nothing.
+    echo __('The sign-up form is disabled.');
+    return; // Prevents the rest of the template from rendering.
+}
 ?>
 <h1>Sign Up</h1>
 <form action="<?= $block->getUrl('mysignup/index/post') ?>" method="POST">
