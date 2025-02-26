@@ -1,12 +1,10 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       layout="1column"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="content">
-            <block class="Magento\Framework\View\Element\Template"
-                   name="signup.form"
-                   template="Kapana_MySignup::form.phtml"/>
+            <block class="Kapana\MySignup\Block\Signup" name="signup.form" template="Kapana_MySignup::signup.phtml"/>
         </referenceContainer>
     </body>
 </page>

@@ -137,5 +137,11 @@ return [
     ],
     'install' => [
         'date' => 'Mon, 11 Nov 2024 12:34:02 +0000'
+    ],
+    'db_logger' => [
+        'output' => 'file',
+        'log_everything' => 1,
+        'query_time_threshold' => '0.001',
+        'include_stacktrace' => 1
     ]
 ];

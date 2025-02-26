@@ -6,42 +6,73 @@ use Magento\Framework\Event\ObserverInterface;
 use Magento\Framework\Event\Observer;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\App\ResourceConnection;
+use Psr\Log\LoggerInterface;
 
 class ValidateLinkedinObserver implements ObserverInterface
 {
-    /**
-     * Validate uniqueness and other conditions before customer save.
-     */
+    protected $customerRepository;
+    protected $resource;
+    protected $logger;
+
+    public function __construct(
+        CustomerRepositoryInterface $customerRepository,
+        ResourceConnection          $resource,
+        LoggerInterface             $logger
+    )
+    {
+        $this->customerRepository = $customerRepository;
+        $this->resource = $resource;
+        $this->logger = $logger;
+    }
+
     public function execute(Observer $observer)
     {
-        $customer = $observer->getData('customer');
-
+        $customer = $observer->getEvent()->getCustomer();
         if (!$customer) {
-            return null; // no customer data, nothing to do.
+            return null;
         }
+        
+        $this->logger->info('Customer Data Before Saving:', $customer->getData());
 
-        $linkedinProfile = '';
-        if (method_exists($customer, 'getCustomAttribute')) {
-            $attribute = $customer->getCustomAttribute('linkedin_profile');
-            if ($attribute) {
-                $linkedinProfile = $attribute->getValue();
-            }
-        } elseif (method_exists($customer, 'getData')) {
-            $linkedinProfile = $customer->getData('linkedin_profile');
-        }
+        $linkedinProfile = $customer->getData('linkedin_profile');
 
         if ($linkedinProfile) {
             $linkedinProfile = trim($linkedinProfile);
-            if (strlen($linkedinProfile) > 250) {
-                throw new LocalizedException(__('LinkedIn profile exceeds 250 characters.'));
-            }
+
+            // validation of URL
             if (!filter_var($linkedinProfile, FILTER_VALIDATE_URL)) {
                 throw new LocalizedException(__('Invalid LinkedIn profile URL.'));
             }
 
-            /** @var CustomerRepositoryInterface $customerRepository */
+            // log before saving
+            $this->logger->info('Saving LinkedIn Profile:', ['linkedin_profile' => $linkedinProfile]);
+
+            // save data in customer_entity
+            $customer->setData('linkedin_profile', $linkedinProfile);
+            $this->customerRepository->save($customer);
+
+            // DI injection
+            $connection = $this->resource->getConnection();
+            $customerId = $customer->getId();
+
+            if ($customerId) {
+                $connection->update(
+                    'customer_entity',
+                    ['linkedin_profile' => $linkedinProfile],
+                    ['entity_id = ?' => $customerId]
+                );
+            }
+
+            // log after saving
+            $this->logger->info('Customer Data After Saving:', ['linkedin_profile' => $linkedinProfile]);
+        } else {
+            $this->logger->info('linkedin_profile is missing in Customer Data.');
         }
 
         return $this;
     }
 }
+
+
+

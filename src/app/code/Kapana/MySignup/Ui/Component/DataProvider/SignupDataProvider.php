@@ -37,7 +37,6 @@ class SignupDataProvider extends AbstractDataProvider
      */
     public function getData()
     {
-        // Instead of calling the parent, let's build the array manually to see what's coming from the collection
         $itemsArray = [];
         foreach ($this->collection->getItems() as $item) {
             $itemsArray[] = $item->getData();

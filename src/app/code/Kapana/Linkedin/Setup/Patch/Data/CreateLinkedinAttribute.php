@@ -47,19 +47,26 @@ class CreateLinkedinAttribute implements DataPatchInterface
             'linkedin_profile',
             [
                 'type' => 'varchar',
-                'label' => 'LinkedIn Profile',
                 'input' => 'text',
+                'label' => 'LinkedIn Profile',
                 'required' => false,
-                'unique' => false,
                 'visible' => true,
-                'position' => 999,
                 'system' => false,
-                'validate_rules' => '{"max_text_length":250,"min_text_length":0}',
+                'position' => 999,
                 'user_defined' => true,
-                'visible_on_front' => true,
                 'sort_order' => 999,
-                'frontend_input' => 'text',
-                'frontend_label' => 'LinkedIn Profile',
+                'backend' => '',
+                'source' => '',
+                'is_used_in_grid' => true,
+                'is_visible_in_grid' => true,
+                'is_filterable_in_grid' => true,
+                'is_searchable_in_grid' => true,
+                'used_in_forms' => [
+                    'adminhtml_customer',
+                    'customer_account_create',
+                    'customer_account_edit'
+                ],
+                'backend_type' => 'static'
             ]
         );
         $attribute = $eavSetup->getEavConfig()->getAttribute(Customer::ENTITY, 'linkedin_profile');

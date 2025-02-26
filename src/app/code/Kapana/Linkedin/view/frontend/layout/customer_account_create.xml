@@ -6,10 +6,12 @@
     </head>
     <body>
 
-        <referenceContainer name="customer.form.register.fields.before">
+        <!-- Inject LinkedIn field inside the customer registration form -->
+        <referenceBlock name="customer_form_register">
             <block class="Magento\Framework\View\Element\Template"
                    name="linkedin.form.register"
                    template="Kapana_Linkedin::form/register_linkedin.phtml"/>
-        </referenceContainer>
+        </referenceBlock>
+
     </body>
 </page>
